@@ -1,0 +1,60 @@
+img {
+    
+}
+
+.wrapper {
+    position: relative;
+    justify-content: center;
+    display: flex;
+    margin-top: 70px;
+    &__img {
+        display: none;
+    }
+}
+
+
+// .active {
+//     display: block;
+// }
+
+.btn {
+    
+    &__prev {
+    height: 30px;
+        position: absolute;
+        left: 20px;
+        top: 250px;
+        &:hover {
+            scale: 1.5;
+            transition: all 0.3s ease-in-out;
+        }
+    }
+
+    &__next {
+        height: 30px;
+        position: absolute;
+        right: 20px;
+        top: 250px;
+        transform: rotate(180deg);
+        &:hover {
+            scale: 1.5;
+            transition: all 0.3s ease-in-out;
+        }
+    }
+    
+}
+
+.image {
+    height: 600px;
+    width: 1000px;
+    border-radius: 10px;
+}
+
+.slide {
+    opacity: 0;
+
+}
+.slide.active {
+    opacity: 1;
+    transition: all 0.4s;
+}
