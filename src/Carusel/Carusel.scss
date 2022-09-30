@@ -1,0 +1,54 @@
+
+
+
+.window {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.images {
+    width: 800px;
+}
+
+
+.wrapper2 {
+    position: relative;
+    margin: 200px auto;
+    padding: 100px 0 100px 0 ;
+    height: 600px;
+    width: 1000px;
+    &__sliders {
+        display: flex;
+        height: 100%;
+        // width: 100%;
+    }
+}
+
+
+.btn {
+    
+    &__prev2 {
+        height: 30px;
+        position: absolute;
+        left: -70px;
+        top: 250px;
+        &:hover {
+            scale: 1.5;
+            transition: all 0.3s ease-in-out;
+        }
+    }
+
+    &__next2 {
+        height: 30px;
+        position: absolute;
+        right: -70px;
+        top: 250px;
+        transform: rotate(180deg);
+        &:hover {
+            scale: 1.5;
+            transition: all 0.3s ease-in-out;
+        }
+    }
+    
+}

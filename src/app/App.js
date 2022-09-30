@@ -1,7 +1,9 @@
 import Simple from "../Simple/Simple";
-import './app.scss';
+import Carusel from "../Carusel/Carusel";
 import { SimpleData } from '../Simple/SimpleData';
+import { CaruselData } from "../Carusel/CaruselData";
 
+import './app.scss';
 
 const App = () =>  {
 
@@ -11,7 +13,7 @@ const App = () =>  {
     <div className="container">
       <div className="title">Welcome</div>
       <Simple slides={SimpleData}/>
-
+      <Carusel slides={CaruselData}/>
     </div>
 
     </>
