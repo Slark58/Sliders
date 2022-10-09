@@ -10,17 +10,43 @@ const Carusel = ({data}) => {
 
     const [ widthwindow, setwidthwindow ] = useState(800);
     const [ current, setCurrent ] = useState(0);
- 
+
 
     const offsetRight = () => {
         setCurrent(current === data.length - 1 ? 0 : current + 1) 
-
-        setwidthwindow()
+        
+        if (offset == (+width.slice(0, width.length - 2) * (content.length - 1))) {
+            offset = 0;
+        } else {
+            offset += +width.slice(0, width.length - 2); 
+        }
+    
+        wrapper.style.transform = `translateX(-${offset}px)`;
+    
+        if (slideIndex == content.length) {
+            slideIndex = 1;
+        } else {
+            slideIndex++;
+        }
     }
 
     const offsetLeft = () => {
         setCurrent(current === 0 ? data.length - 1 : current - 1) 
 
+        if (offset == 0) {
+            offset = +width.slice(0, width.length - 2) * (content.length - 1);
+        } else {
+            offset -= +width.slice(0, width.length - 2);
+        }
+    
+        wrapper.style.transform = `translateX(-${offset}px)`;
+    
+        if (slideIndex == 1) {
+            slideIndex = content.length;
+        } else {
+            slideIndex--;
+        }
+    
     }
 
   return (
@@ -29,21 +55,21 @@ const Carusel = ({data}) => {
         
         <div className="wrapper2">
             <div className="window">
-            <div className="wrapper2__sliders">
+                <div className="wrapper2__sliders">
 
-            <img src={arrow} alt="foto" className="btn__prev2"  onClick={offsetRight}/>
+                    <img src={arrow} alt="foto" className="btn__prev2"  onClick={offsetRight}/>
 
-            {CaruselData.map((slide, i) => {
+                    {CaruselData.map((slide, i) => {
 
-            return(
-                <img src={slide.Image} key={i} alt="picture" className='images'/>
-            )
-            })}
+                    return(
+                        <img src={slide.Image} key={i} alt="picture" className='images'/>
+                    )
+                    })}
 
-            <img src={arrow} alt="foto" className="btn__next2"  onClick={offsetLeft}/>
+                    <img src={arrow} alt="foto" className="btn__next2"  onClick={offsetLeft}/>
 
                 
-        </div>
+                </div>
             </div>
             
         
