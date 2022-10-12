@@ -13,7 +13,9 @@ const App = () =>  {
     <div className="container">
       <div className="title">Welcome</div>
       <Simple slides={SimpleData}/>
-      <Carusel slides={CaruselData}/>
+      <Carusel slides={CaruselData}  /> 
+        
+
     </div>
 
     </>

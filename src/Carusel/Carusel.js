@@ -1,51 +1,40 @@
-import React, { useState } from 'react'
-import { CaruselData } from './CaruselData';
+import React, { useState, useEffect} from 'react'
+// import { CaruselData } from './CaruselData';
 import arrow from '../imgs/arrow.png'
 
 import './Carusel.scss';
 // import '../Simple/simple.scss';
 
-const Carusel = ({data}) => {
 
 
-    const [ widthwindow, setwidthwindow ] = useState(800);
-    const [ current, setCurrent ] = useState(0);
+const Carusel = (data) => {
+
+    console.log(data)
+    
+    const [currentIndex, setCurrentIndex] = useState(0)
+    const [length, setLength] = useState()   
+
+    // console.log(children)
+    
+    useEffect(() => {
+        setLength(data.slides.length)
+    }, [data])
 
 
     const offsetRight = () => {
-        setCurrent(current === data.length - 1 ? 0 : current + 1) 
-        
-        if (offset == (+width.slice(0, width.length - 2) * (content.length - 1))) {
-            offset = 0;
-        } else {
-            offset += +width.slice(0, width.length - 2); 
+        // setCurrent(current === data.length - 1 ? 0 : current + 1) 
+        if (currentIndex < (length - 1)) {
+            setCurrentIndex(prevState => prevState + 1)
         }
-    
-        wrapper.style.transform = `translateX(-${offset}px)`;
-    
-        if (slideIndex == content.length) {
-            slideIndex = 1;
-        } else {
-            slideIndex++;
-        }
+        console.log('asafa')
     }
 
     const offsetLeft = () => {
-        setCurrent(current === 0 ? data.length - 1 : current - 1) 
-
-        if (offset == 0) {
-            offset = +width.slice(0, width.length - 2) * (content.length - 1);
-        } else {
-            offset -= +width.slice(0, width.length - 2);
+        // setCurrent(current === 0 ? data.length - 1 : current - 1) 
+        if (currentIndex > 0) {
+            setCurrentIndex(prevState => prevState - 1)
         }
-    
-        wrapper.style.transform = `translateX(-${offset}px)`;
-    
-        if (slideIndex == 1) {
-            slideIndex = content.length;
-        } else {
-            slideIndex--;
-        }
+        console.log('asafa')
     
     }
 
@@ -55,21 +44,22 @@ const Carusel = ({data}) => {
         
         <div className="wrapper2">
             <div className="window">
-                <div className="wrapper2__sliders">
+                <img src={arrow} alt="foto" className="btn__prev2"  onClick={offsetLeft}/>
+                <div className="wrapper2__sliders" 
+                style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
 
-                    <img src={arrow} alt="foto" className="btn__prev2"  onClick={offsetRight}/>
 
-                    {CaruselData.map((slide, i) => {
+                    {data.slides.map((item, i) => {
 
-                    return(
-                        <img src={slide.Image} key={i} alt="picture" className='images'/>
-                    )
+                        return(
+                            <img  src={item.Image}  key={i} alt="picture" className='images'/>
+                        )
                     })}
 
-                    <img src={arrow} alt="foto" className="btn__next2"  onClick={offsetLeft}/>
 
                 
                 </div>
+                    <img src={arrow} alt="foto" className="btn__next2"  onClick={offsetRight}/>
             </div>
             
         
